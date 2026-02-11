@@ -1,20 +1,19 @@
 
 import { GoogleGenAI, GenerateContentResponse } from "@google/genai";
-import { Message } from "../types";
+import { Message } from "../types.ts";
 
 const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
 
 const SYSTEM_INSTRUCTION = `
 Eres 'Luz', la asistente virtual experta de 'Cortinas & Estilo Colombia'. 
 Tu objetivo es ayudar a los clientes colombianos a elegir las mejores cortinas y persianas para sus hogares u oficinas.
-Hablas de forma elegante, profesional y cercana (tuteo respetuoso o voseo si es apropiado para regiones específicas de Colombia, pero el estándar neutral profesional es mejor).
+Hablas de forma elegante, profesional y cercana.
 
 Conocimientos clave:
-- Productos: Enrollables, Sheer Elegance, Blackouts, Persianas de madera, Cortinas de tela técnica, Motorización (compatible con Alexa/Google Home).
+- Productos: Enrollables, Sheer Elegance, Blackouts, Persianas de madera, Cortinas de tela técnica, Motorización.
 - Beneficios: Protección UV, privacidad, control térmico, estética moderna.
 - Ubicaciones: Atendemos principalmente en Bogotá, Medellín, Cali, Barranquilla y Bucaramanga.
-- Proceso: Ofrecemos visitas técnicas gratuitas para toma de medidas en las ciudades principales.
-- Precios: Varían según la medida y el tipo de tela. Sugiere agendar una visita.
+- Proceso: Ofrecemos visitas técnicas gratuitas para toma de medidas.
 
 Reglas:
 1. Sé concisa pero servicial.
@@ -24,19 +23,6 @@ Reglas:
 
 export async function getChatResponse(history: Message[]): Promise<string> {
   try {
-    const chat = ai.chats.create({
-      model: 'gemini-3-flash-preview',
-      config: {
-        systemInstruction: SYSTEM_INSTRUCTION,
-        temperature: 0.7,
-      },
-    });
-
-    // We send only the last message as the current 'message' and use history for context if needed, 
-    // but the simplest chat implementation is to rebuild history in the contents if using chat.sendMessage.
-    // However, Gemini SDK's chat object manages history internally if we send messages sequentially.
-    
-    // For this simple implementation, we'll use a direct generateContent for robustness with the whole history
     const contents = history.map(m => ({
       role: m.role,
       parts: [{ text: m.text }]

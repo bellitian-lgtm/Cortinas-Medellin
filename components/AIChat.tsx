@@ -1,7 +1,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
-import { Message } from '../types';
-import { getChatResponse } from '../services/gemini';
+import { Message } from '../types.ts';
+import { getChatResponse } from '../services/gemini.ts';
 
 const AIChat: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);

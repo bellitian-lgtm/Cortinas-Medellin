@@ -1,11 +1,11 @@
 
 import React from 'react';
-import Header from './components/Header';
-import Hero from './components/Hero';
-import Products from './components/Products';
-import VideoSection from './components/VideoSection';
-import Footer from './components/Footer';
-import AIChat from './components/AIChat';
+import Header from './components/Header.tsx';
+import Hero from './components/Hero.tsx';
+import Products from './components/Products.tsx';
+import VideoSection from './components/VideoSection.tsx';
+import Footer from './components/Footer.tsx';
+import AIChat from './components/AIChat.tsx';
 
 const App: React.FC = () => {
   return (
