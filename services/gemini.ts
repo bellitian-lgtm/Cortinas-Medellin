@@ -1,8 +1,6 @@
 
-import { GoogleGenAI, GenerateContentResponse } from "@google/genai";
+import { GoogleGenAI } from "@google/genai";
 import { Message } from "../types.ts";
-
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
 
 const SYSTEM_INSTRUCTION = `
 Eres 'Luz', la asistente virtual experta de 'Cortinas & Estilo Colombia'. 
@@ -23,6 +21,10 @@ Reglas:
 
 export async function getChatResponse(history: Message[]): Promise<string> {
   try {
+    // Se inicializa la instancia dentro de la función para evitar que errores 
+    // de configuración de la clave bloqueen el renderizado inicial del sitio.
+    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+
     const contents = history.map(m => ({
       role: m.role,
       parts: [{ text: m.text }]
