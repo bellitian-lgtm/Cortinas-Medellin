@@ -36,7 +36,7 @@ const AIChat: React.FC = () => {
     } catch (err) {
       setMessages(prev => [...prev, { 
         role: 'model', 
-        text: 'Disculpa, tenemos una interrupción temporal. Puedes contactarnos al WhatsApp para una asesoría inmediata.' 
+        text: 'Disculpa, tenemos una interrupción temporal en el servicio de IA. Puedes contactarnos al WhatsApp +57 300 000 0000 para una asesoría inmediata.' 
       }]);
     } finally {
       setIsLoading(false);
@@ -65,7 +65,7 @@ const AIChat: React.FC = () => {
         <div className="bg-white w-[350px] sm:w-[400px] h-[550px] rounded-2xl shadow-2xl flex flex-col overflow-hidden border border-slate-200 animate-in fade-in slide-in-from-bottom-5 duration-300">
           <div className="bg-amber-600 p-4 flex justify-between items-center text-white shadow-md">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center font-bold border border-white/30">
+              <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center font-bold border border-white/30 text-white">
                 L
               </div>
               <div>
@@ -73,7 +73,7 @@ const AIChat: React.FC = () => {
                 <p className="text-[10px] text-amber-100 mt-1 uppercase tracking-widest font-semibold">Cortinas & Estilo Col</p>
               </div>
             </div>
-            <button onClick={() => setIsOpen(false)} className="hover:bg-black/10 p-1.5 rounded-full transition-colors">
+            <button onClick={() => setIsOpen(false)} className="hover:bg-black/10 p-1.5 rounded-full transition-colors text-white">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
@@ -123,8 +123,8 @@ const AIChat: React.FC = () => {
               </svg>
             </button>
           </form>
-          <div className="bg-white text-[9px] text-center pb-3 text-slate-400 font-medium">
-            Atención personalizada en toda Colombia
+          <div className="bg-white text-[9px] text-center pb-3 text-slate-400 font-medium uppercase tracking-tighter">
+            Asesoría personalizada en toda Colombia
           </div>
         </div>
       )}
