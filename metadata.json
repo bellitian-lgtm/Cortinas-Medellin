@@ -1,0 +1,7 @@
+{
+  "name": "Cortinas & Estilo Colombia",
+  "description": "Sitio web de diseño de interiores especializado en cortinas y persianas con asistente de IA integrado.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
